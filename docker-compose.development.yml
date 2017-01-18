@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+    selenium:
+        image: selenium/standalone-chrome:3.0.1-dysprosium
+
+    wdio:
+        image: marcopeg/node:0.1
+        volumes:
+            - ./services/wdio/src:/usr/src/app
+            - ${HUMBLE_DATA}/node_modules/wdio:/usr/src/app/node_modules
+        entrypoint: ["npm", "run", "start:dev"]

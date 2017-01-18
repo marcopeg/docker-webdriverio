@@ -1,0 +1,7 @@
+version: '2.1'
+services:
+    selenium:
+        image: selenium/standalone-chrome:3.0.1-dysprosium
+
+    wdio:
+        build: ./services/wdio

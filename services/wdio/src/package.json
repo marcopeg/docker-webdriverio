@@ -1,0 +1,17 @@
+{
+  "name": "webdriver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "npm install && nodemon index.js",
+    "test": "echo \"no tests available\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.11.0",
+    "webdriverio": "^4.6.1"
+  }
+}
