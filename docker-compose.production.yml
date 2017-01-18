@@ -5,3 +5,5 @@ services:
 
     wdio:
         build: ./services/wdio
+        environment:
+            - NODE_ENV=production

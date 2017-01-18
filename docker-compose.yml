@@ -7,5 +7,9 @@ services:
         links:
             - selenium:selenium
         volumes:
-            - ${HUMBLE_DATA}/screenshot:/usr/src/screenshot
+            - ${HUMBLE_DATA}/screenshots:/usr/src/screenshots
             - ${HUMBLE_DATA}/reports:/usr/src/reports
+        environment:
+            SELENIUM_HOST: selenium
+            SELENIUM_PORT: 4444
+            SELENIUM_BROWSER: chrome

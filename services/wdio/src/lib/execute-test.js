@@ -1,20 +1,28 @@
 const webdriverio = require('webdriverio')
+const config = require('./config')
 
 const webdriverConf = {
-    host: 'selenium',
-    port: 4444,
+    host: config.getStrict('SELENIUM_HOST'),
+    port: config.getStrict('SELENIUM_PORT'),
     desiredCapabilities: {
-        browserName: 'chrome'
+        browserName: config.getStrict('SELENIUM_BROWSER')
     },
 }
 
-
 module.exports = testHandler => new Promise((resolve, reject) => {
+    let browser = webdriverio.remote(webdriverConf).init();
     try {
-        testHandler(webdriverio.remote(webdriverConf).init())
-            .then(resolve)
-            .catch(reject)
+        testHandler(browser)
+            .then(res => {
+                browser.end()
+                resolve(res)
+            })
+            .catch(err => {
+                browser.end()
+                reject(err)
+            })
     } catch(e) {
+        browser.end()
         reject(e.message)
     }
 })
