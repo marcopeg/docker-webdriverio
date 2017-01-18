@@ -1,1 +1,8 @@
+
+# Ignore environment files
+!.env
+.env.local*
+.env.override*
+
+# Ignore volatile data
 /data
