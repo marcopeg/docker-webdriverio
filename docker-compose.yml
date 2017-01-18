@@ -7,8 +7,8 @@ services:
         links:
             - selenium:selenium
         volumes:
-            - ${HUMBLE_DATA}/screenshots:/usr/src/screenshots
-            - ${HUMBLE_DATA}/reports:/usr/src/reports
+            - ${HUMBLE_DATA}/test-screenshots:/usr/src/screenshots
+            - ${HUMBLE_DATA}/test-reports:/usr/src/reports
         environment:
             SELENIUM_HOST: selenium
             SELENIUM_PORT: 4444

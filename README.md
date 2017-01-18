@@ -15,7 +15,7 @@ The `/data` is being used for all volatile files such `node_modules` and test re
 **NOTE:** If you don't have `humble-cli` (aka: if you use Windows) you may try to run:
 
 ```
-HUMBLE_DATA="$PWD/data" docker-compose -f docker-compose.yml -f docker-compose.development.yml up
+docker-compose -f docker-compose.yml -f docker-compose.development.yml up
 ```
 
 ## Write Tests
