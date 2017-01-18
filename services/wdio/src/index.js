@@ -1,11 +1,18 @@
-let browser = require('./wdio').Browser;
 
-console.log('Hello Webdriver1');
+const jsonfile = require('jsonfile')
 
-browser.init()
-    .url('http://google.com')
-    .waitForVisible('input[name="btnK"]', 10000)
-    .saveScreenshot('/usr/src/screenshot/google.png')
+const runTests = require('./lib/run-tests')
+const clearLog = require('./lib/clear-log')
 
-
-setInterval(() => {}, 5000);
+runTests('/usr/src/app/tests', (tests, results) => {
+    let reportsPath = '/usr/src/reports/'
+    if (results.hasErrors) {
+        let reportPath = reportsPath + Date.now() + '.failed.json'
+        jsonfile.writeFileSync(reportPath, results, {spaces: 2})
+        clearLog('SHIT HAPPENS :-(', reportPath)
+    } else {
+        let reportPath = reportsPath + Date.now() + '.json'
+        jsonfile.writeFileSync(reportPath, results, {spaces: 2})
+        clearLog('Everything was good today!', reportPath)
+    }
+})

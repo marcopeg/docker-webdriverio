@@ -8,3 +8,4 @@ services:
             - selenium:selenium
         volumes:
             - ${HUMBLE_DATA}/screenshot:/usr/src/screenshot
+            - ${HUMBLE_DATA}/reports:/usr/src/reports
