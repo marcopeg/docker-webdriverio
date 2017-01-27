@@ -1,5 +1,6 @@
 const webdriverio = require('webdriverio')
 const config = require('./config')
+const injectScriptCmd = require('../lib/wdio-inject-script')
 
 const webdriverConf = {
     host: config.getStrict('SELENIUM_HOST'),
@@ -11,6 +12,9 @@ const webdriverConf = {
 
 module.exports = testHandler => new Promise((resolve, reject) => {
     let browser = webdriverio.remote(webdriverConf).init();
+
+    injectScriptCmd(browser)
+
     try {
         testHandler(browser)
             .then(res => {
